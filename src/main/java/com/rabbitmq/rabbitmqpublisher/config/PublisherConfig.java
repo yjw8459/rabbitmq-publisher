@@ -19,7 +19,7 @@ public class PublisherConfig {
 
     private static final String QUEUE_NAME = "sample.queue";
 
-    private static final String ROUTING_KEY = "sample.jwtoo.#";
+    private static final String ROUTING_KEY = "sample.jwtoo";
 
     /**
      * TopicExchange
@@ -28,6 +28,11 @@ public class PublisherConfig {
     @Bean
     TopicExchange exchange(){
         return new TopicExchange(EXCHANGE_NAME);
+    }
+
+    @Bean
+    public Queue queue() {
+        return new Queue(QUEUE_NAME);
     }
 
     @Bean

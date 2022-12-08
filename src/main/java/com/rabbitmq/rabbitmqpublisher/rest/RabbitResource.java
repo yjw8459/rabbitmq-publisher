@@ -17,7 +17,7 @@ public class RabbitResource {
 
     @GetMapping("/sample/queue")
     public String publish() {
-        rabbitTemplate.convertAndSend(EXCHANGE_NAME, "sample.jwtoo#", "RabbitMQ + Springboot = Success!");
+        rabbitTemplate.convertAndSend(EXCHANGE_NAME, "sample.jwtoo", "RabbitMQ + Springboot = Success!");
         return "message sending!";
     }
 }
