@@ -22,19 +22,24 @@ public class PublisherConfig {
     private static final String ROUTING_KEY = "sample.jwtoo";
 
     /**
-     * TopicExchange
-     * @return
+     * TopicExchange(Topic 타입의 교환기 생성)
      */
     @Bean
     TopicExchange exchange(){
         return new TopicExchange(EXCHANGE_NAME);
     }
 
+    /**
+     * AMQP Queue 생성
+     */
     @Bean
     public Queue queue() {
         return new Queue(QUEUE_NAME);
     }
 
+    /**
+     *  RabbitTemplate이 메세지를 exchage할 때 일어나는 행위를 정의하도록 바인딩
+     */
     @Bean
     Binding binding(Queue queue, TopicExchange exchange) {
         return BindingBuilder.bind(queue).to(exchange).with(ROUTING_KEY);

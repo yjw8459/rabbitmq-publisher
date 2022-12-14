@@ -17,7 +17,14 @@ public class RabbitResource {
 
     @GetMapping("/sample/queue")
     public String publish() {
+        // rabbitMQ Customer Send
         rabbitTemplate.convertAndSend(EXCHANGE_NAME, "sample.jwtoo", "RabbitMQ + Springboot = Success!");
         return "message sending!";
+    }
+
+    @GetMapping("/test/queue")
+    public String callTest(){
+        rabbitTemplate.convertAndSend("test.exchange", "test.routeKey", "[Test1] RabbitMQ + Springboot = Success!");
+        return "Test Message Sending!";
     }
 }
